@@ -1,3 +1,11 @@
 .App {
+  --color-transition: 1s;
+  --regular-transition: background-color var(--color-transition) linear;
+  position: relative;
   text-align: center;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
 }
