@@ -9,20 +9,33 @@ import Footer from './components/footer/Footer';
 import './App.css';
 
 function App() {
-  const [theme, setTheme] = useState('dark');
+  
+  let initialState;
+  if (localStorage.getItem('userTheme')) {
+    initialState = localStorage.getItem('userTheme');
+  } else if (
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark').matches
+  ) {
+    initialState = 'dark';
+  } else {
+    initialState = 'light';
+  }
+
+  const [theme, setTheme] = useState(initialState);
 
   return (
     <div className="App" style={{ ...colors[theme], ...colors.default }}>
       <header className="header">
         <Navbar />
       </header>
-      <main className='main'>
+      <main className="main">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </main>
-      <Footer/>
+      <Footer />
       <ThemeSwitch {...{ theme, setTheme }} />
     </div>
   );
