@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../logo/Logo';
-import styles from './Navbar.module.css';
+import './Navbar.css';
 
 export default function Navbar() {
   const [active, setActive] = useState(false);
@@ -12,37 +11,32 @@ export default function Navbar() {
     setActive(!active);
   }
 
+  const navItems = [
+    { id: 1, text: 'Home', to: '/' },
+    { id: 2, text: 'About', to: '/about' },
+    { id: 3, text: 'Products', to: '/help' },
+    { id: 4, text: 'Sign in', to: '/signup', extraClass: 'navbar__button navbar__button_sign-up' },
+  ];
+
   return (
-    <nav className={styles.navbar}>
+    <nav className="navbar">
       <Logo />
       <FontAwesomeIcon
         icon={faAnglesLeft}
         onClick={handleClick}
-        className={classNames(styles.navbar__toggle, {
-          [styles.navbar__toggle_active]: active,
-        })}
+        className={`navbar__toggle ${active ? 'navbar__toggle_active' : ''}`}
       />
-      <ul className={classNames(styles.navbar__menu, {
-        [styles.navbar__menu_collapsed]: !active,
-      })}>
-        <li className={styles.navbar__item}>
-          <Link className={styles.navbar__link} to="/">Home</Link>
-        </li>
-        <li className={styles.navbar__item}>
-          <Link className={styles.navbar__link} to="/">Send</Link>
-        </li>
-        <li className={styles.navbar__item}>
-          <Link className={styles.navbar__link} to="/">Help</Link>
-        </li>
-        <li className={styles.navbar__item}>
-          <Link className={styles.navbar__link} to="/">Home</Link>
-        </li>
-        <li className={styles.navbar__item}>
-          <Link className={styles.navbar__link} to="/">Home</Link>
-        </li>
-        <li className={styles.navbar__item}>
-          <Link className={styles.navbar__link} to="/">Home</Link>
-        </li>
+      <ul className={`navbar__menu ${!active ? 'navbar__menu_collapsed' : ''}`}
+      style={{"--children-number": navItems.length}}>
+        {navItems.map((item) => {
+          return (
+            <li key={item.id} className="navbar__item">
+              <Link className={`navbar__link ${item.extraClass ?? ''}`} to={item.to}>
+                {item.text}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

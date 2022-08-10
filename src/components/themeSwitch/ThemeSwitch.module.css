@@ -1,5 +1,5 @@
 .themeSwitch {
-  position: absolute;
+  position: fixed;
   right: 4rem;
   bottom: 5rem;
   font-size: 2rem;
@@ -7,14 +7,27 @@
   border-radius: 50%;
   background-color: var(--primary-color);
   transition: var(--regular-transition),
-  color var(--color-transition) linear;
+  color var(--regular-duration) linear,
+  filter .25s linear; 
   box-shadow: 0 0 2rem 1rem rgba(0, 0, 0, 0.365);
+}
+
+.themeSwitch:hover {
+  cursor: pointer;
 }
 
 .dark {
   color: #ffffff;
 }
 
+.dark:hover {
+  filter: var(--lighten-filter);
+}
+
 .light {
-  color: #ecc838
+  color: #ecc838;
+}
+
+.light:hover {
+  filter: var(--darken-filter);
 }

@@ -1,0 +1,31 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  background-image: url(/public/mainBG.jpg);
+  background-color: var(--bg-darken);
+  background-blend-mode: darken;
+  background-size: cover;
+  transition: background-color var(--regular-duration);
+}
+
+.home > * {
+  margin: 0;
+}
+
+.main-content__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .main-content__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-content__buttons > * {
+    width: 70%;
+  }
+}

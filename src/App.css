@@ -1,11 +1,22 @@
 .App {
-  --color-transition: 1s;
-  --regular-transition: background-color var(--color-transition) linear;
+  --regular-duration: 1s;
+  --regular-transition: background-color var(--regular-duration) linear;
+  --fs: 1.5rem;
+  --darken-filter: brightness(90%);
+  --lighten-filter: brightness(120%);
+  --nav-padding: 1rem;
+  --logo-height: 2.5rem;
   position: relative;
   text-align: center;
-  min-height: 100vh;
+  color: var(--secondary-color);
 }
 
 * {
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+  .App {
+    --fs: 1.3rem;
+  }
 }

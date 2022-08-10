@@ -1,0 +1,17 @@
+.logo__img:hover {
+  cursor: pointer;
+}
+
+.logo {
+  display: flex;
+  height: var(--logo-height);
+  width: auto;
+}
+
+.logo__img .cneutral {
+  fill: var(--secondary-color);
+}
+
+.logo__img:hover {
+  filter: var(--hover-filter)
+}

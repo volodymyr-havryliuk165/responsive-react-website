@@ -1,0 +1,22 @@
+.list {
+  padding-left: var(--list-pad, 0);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.list__heading {
+  padding-left: var(--list-pad, 0);
+  text-align: left;
+}
+
+.list__link {
+  color: inherit;
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --list-pad: 2rem;
+  }  
+}
